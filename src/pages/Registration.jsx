@@ -1,8 +1,10 @@
 import { Button, Checkbox, Form, Input } from 'antd';
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
+import { Link, useNavigate } from 'react-router-dom'
 
 const Registration = () => {
+  let navigate = useNavigate()
     const onFinish = async values => {
     
 
@@ -22,6 +24,10 @@ const Registration = () => {
   )
   if(data.data.success=="Registration Successfully"){
     toast.success("Registration Successfully")
+    setTimeout(() => {
+      navigate("/login")
+      
+    }, 2000);
 
   }else if(data.data.error="User Already Existed"){
     toast.error("User Already Existed")
@@ -76,6 +82,10 @@ const Registration = () => {
           Sign Up
         </Button>
       </Form.Item>
+
+      <p className='ml-32 cursor-pointer'>Already have Account? 
+        <Link to="/login"><span className='text-blue-400 font-bold'> Login</span></Link>
+      </p>
     </Form>
   )
 }

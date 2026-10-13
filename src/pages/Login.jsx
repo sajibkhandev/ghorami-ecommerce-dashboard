@@ -1,7 +1,7 @@
 import { Button, Checkbox, Form, Input } from 'antd';
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 
 const Login = () => {
@@ -17,7 +17,10 @@ const Login = () => {
     )
     if (data.data.success == "Login Successfully") {
       toast.success("Login Successfully")
-      navigate("/home")
+      setTimeout(()=>{
+        navigate("/home")
+
+      },2000)
 
 
     } else if (data.data.error = "Invalid Cradrintial") {
@@ -69,6 +72,9 @@ const Login = () => {
           Login
         </Button>
       </Form.Item>
+      <p className='ml-32 cursor-pointer'>Don't you have Account?
+        <Link to="/"><span className='text-blue-400 font-bold'> Sigi Up</span></Link>
+      </p>
     </Form>
   )
 }
