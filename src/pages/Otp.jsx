@@ -1,30 +1,36 @@
 import { Button, Checkbox, Form, Input } from 'antd';
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 
 
 const Otp = () => {
     let navigate = useNavigate()
+    let param = useParams()
+    // console.log(param.email);
+    
+    
+    
+
     const onFinish = async values => {
-        let data = await axios.post('http://localhost:5000/api/v1/authentication/login',
+        let data = await axios.post('http://localhost:5000/api/v1/authentication/otp',
             {
-                email: values.email,
-                password: values.password
+                otp: values.otp,
+                email:param.email
 
             },
 
         )
-        if (data.data.success == "Login Successfully") {
-            toast.success("Login Successfully")
+        if (data.data.success == "Otp match") {
+            toast.success("Verification Successful")
             setTimeout(() => {
-                navigate("/home")
-
+                navigate("/login")
             }, 2000)
-
-
-        } else if (data.data.error = "Invalid Cradrintial") {
-            toast.error("Invalid Cradrintial")
+        } else if (data.data.error = "Otp not match") {
+            toast.error("Otp not match")
+        }
+        else if (data.data.error = "We don't find your account") {
+            toast.error("We don't find your account")
         }
         console.log(data.data);
 
@@ -56,9 +62,6 @@ const Otp = () => {
                 <Input />
 
             </Form.Item>
-
-            
-
 
             <div className='flex gap-x-1 ml-38'>
                 <Form.Item label={null}>
