@@ -23,9 +23,10 @@ const Login = () => {
       },2000)
 
 
-    } else if (data.data.error = "Invalid Cradrintial") {
+    } else if (data.data.error == "Invalid Cradrintial") {
       toast.error("Invalid Cradrintial")
-    }
+    }else if(data.data.error=="Verify Your Email")
+      toast.error("Verify Your Email")
     console.log(data.data);
 
 

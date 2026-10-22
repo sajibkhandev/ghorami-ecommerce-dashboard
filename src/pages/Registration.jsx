@@ -25,7 +25,7 @@ const Registration = () => {
   if(data.data.success=="Registration Successfully"){
     toast.success("Registration Successfully")
     setTimeout(() => {
-      navigate(`/otp/${values.email}`)
+      navigate(`/login`)
       
     }, 2000);
 
