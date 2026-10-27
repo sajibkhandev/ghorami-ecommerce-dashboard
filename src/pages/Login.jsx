@@ -73,6 +73,7 @@ const Login = () => {
           Login
         </Button>
       </Form.Item>
+      <Link to="/forgetpassword"><p className='ml-46 my-2 font-semibold cursor-pointer'>Forget Password</p></Link>
       <p className='ml-32 cursor-pointer'>Don't you have Account?
         <Link to="/"><span className='text-blue-400 font-bold'> Sigi Up</span></Link>
       </p>
