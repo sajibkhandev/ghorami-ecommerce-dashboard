@@ -19,20 +19,22 @@ const Login = () => {
       toast.success("Login Successfully")
       setTimeout(()=>{
         navigate("/home")
-
+        
       },2000)
-
-
+      
+      
     } else if (data.data.error == "Invalid Cradrintial") {
       toast.error("Invalid Cradrintial")
-    }else if(data.data.error=="Verify Your Email")
+    }else if(data.data.error=="Verify Your Email"){
+
       toast.error("Verify Your Email")
+    }
+      
+      
     console.log(data.data);
-
-
-
-
-  };
+    localStorage.setItem("userinfo",JSON.stringify(data.data))
+      
+    };
 
   const onFinishFailed = errorInfo => {
     console.log('Failed:', errorInfo);
