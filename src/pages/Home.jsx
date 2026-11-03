@@ -1,15 +1,15 @@
 import React from 'react'
+import Dashboard from '../components/Dashboard'
+
+
 
 const Home = () => {
-
- let data= JSON.parse(localStorage.getItem("userinfo"))
-
+  
 
   return (
-    <div>
-      <h5>{data.username}</h5>
-      <h5>{data.email}</h5>
-    </div>
+
+    <Dashboard/>
+ 
   )
 }
 
