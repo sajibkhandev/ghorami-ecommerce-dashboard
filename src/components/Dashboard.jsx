@@ -2,6 +2,7 @@ import React from 'react'
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const items = [
     {
@@ -22,8 +23,8 @@ const items = [
         label: 'Category',
         icon: <MailOutlined />,
         children: [
-            { key: '2', label: 'Create Category' },
-            { key: '3', label: 'View Category' },
+            { key: '/dashboard/createcategory', label: 'Create Category' },
+            { key: '/dashboard/viewcategory', label: 'View Category' },
 
         ],
     },
@@ -35,8 +36,8 @@ const items = [
         label: 'SubCategory',
         icon: <MailOutlined />,
         children: [
-            { key: '4', label: 'Create SubCategory' },
-            { key: '5', label: 'View SubCategory' },
+            { key: '/dashboard/createsubcategory', label: 'Create SubCategory' },
+            { key: '/dashboard/viewsubcategory', label: 'View SubCategory' },
 
         ],
     },
@@ -48,8 +49,8 @@ const items = [
         label: 'Product',
         icon: <MailOutlined />,
         children: [
-            { key: '6', label: 'Create Product' },
-            { key: '7', label: 'View Product' },
+            { key: '/dashboard/createproduct', label: 'Create Product' },
+            { key: '/dashboard/viewproduct', label: 'View Product' },
 
         ],
     },
@@ -61,8 +62,8 @@ const items = [
         label: 'Varient',
         icon: <MailOutlined />,
         children: [
-            { key: '8', label: 'Create Varient' },
-            { key: '9', label: 'View Varient' },
+            { key: '/dashboard/createvarient', label: 'Create Varient' },
+            { key: '/dashboard/viewvarient', label: 'View Varient' },
 
         ],
     },
@@ -74,7 +75,7 @@ const items = [
         label: 'Discount',
         icon: <MailOutlined />,
         children: [
-            { key: '10', label: 'Discount' },
+            { key: '/dashboard/adddiscount', label: 'Discount' },
 
         ],
     },
@@ -86,9 +87,12 @@ const items = [
 ];
 
 const Dashboard = () => {
-    let navigate =useNavigate()
+    let data = useSelector(state => state.userinfo.value)
+   
 
-    let handleLogout=()=>{
+    let navigate = useNavigate()
+
+    let handleLogout = () => {
         localStorage.removeItem("userinfo")
         navigate('/login')
     }
@@ -98,7 +102,8 @@ const Dashboard = () => {
 
 
     const onClick = e => {
-        console.log('click ', e);
+        // console.log(e.key);
+        navigate(e.key)
     };
 
 
@@ -114,11 +119,11 @@ const Dashboard = () => {
                 items={items}
             />
             <div className='absolute bottom-0 left-[20px]'>
-               <div className='flex items-center gap-x-3'>
-                 <div className='w-[50px] h-[50px] bg-red-200 rounded-full'></div>
-                <p>Sajib khan</p>
-                
-               </div>
+                <div className='flex items-center gap-x-3'>
+                    <div className='w-[50px] h-[50px] bg-red-200 rounded-full'></div>
+                    <p>{data.username}</p>
+
+                </div>
                 <h3 onClick={handleLogout} className='text-center font-bold py-3 cursor-pointer'>Log Out</h3>
             </div>
         </div>

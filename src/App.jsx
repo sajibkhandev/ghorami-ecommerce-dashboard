@@ -19,6 +19,7 @@ import ViewProduct from "./pages/ViewProduct";
 import CreateVarient from "./pages/CreateVarient";
 import ViewVarient from "./pages/ViewVarient";
 import AddDiscount from "./pages/AddDiscount";
+import Error from "./pages/Error";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,18 +27,25 @@ const router = createBrowserRouter(
     <Route path="/" element={<Registration />}></Route>
     <Route path="/login" element={<Login />}></Route>
     <Route path="/otp/:email/:otp" element={<Otp />}></Route>
-    <Route path="/home" element={<Home />}></Route>
-    <Route path="/forgetpassword" element={<ForgetPassword />}></Route>
-    <Route path="/changepassword/:email" element={<ChangePassword />}></Route>
-    <Route path="/createcategory" element={<CreateCategory />}></Route>
-    <Route path="/viewcategory" element={<ViewCategory />}></Route>
-    <Route path="/createsubcategory" element={<CreateSubCategory />}></Route>
-    <Route path="/viewsubcategory" element={<ViewSubCategory />}></Route>
-    <Route path="/createproduct" element={<CreateProduct />}></Route>
-    <Route path="/viewproduct" element={<ViewProduct />}></Route>
-    <Route path="/createvarient" element={<CreateVarient />}></Route>
-    <Route path="/viewvarient" element={<ViewVarient />}></Route>
-    <Route path="/adddiscount" element={<AddDiscount />}></Route>
+    <Route path="/*" element={<Error />}></Route>
+    <Route path="forgetpassword" element={<ForgetPassword />}></Route>
+    <Route path="changepassword/:email" element={<ChangePassword />}></Route>
+
+    <Route path="/dashboard" element={<Home />}>
+        <Route path="createcategory" element={<CreateCategory />}></Route>
+        <Route path="viewcategory" element={<ViewCategory />}></Route>
+        <Route path="createsubcategory" element={<CreateSubCategory />}></Route>
+        <Route path="viewsubcategory" element={<ViewSubCategory />}></Route>
+        <Route path="createproduct" element={<CreateProduct />}></Route>
+        <Route path="viewproduct" element={<ViewProduct />}></Route>
+        <Route path="createvarient" element={<CreateVarient />}></Route>
+        <Route path="viewvarient" element={<ViewVarient />}></Route>
+        <Route path="adddiscount" element={<AddDiscount />}></Route>
+    
+    </Route>
+
+    
+    
     
 
     </>

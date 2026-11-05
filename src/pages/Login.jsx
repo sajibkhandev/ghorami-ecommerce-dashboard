@@ -2,9 +2,12 @@ import { Button, Checkbox, Form, Input } from 'antd';
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { activeuser } from '../slices/activeUserSlice';
 
 
 const Login = () => {
+  let dispatch=useDispatch()
   let navigate = useNavigate()
   const onFinish = async values => {
     let data = await axios.post('http://localhost:5000/api/v1/authentication/login',
@@ -17,6 +20,11 @@ const Login = () => {
     )
     if (data.data.success == "Login Successfully") {
       toast.success("Login Successfully")
+      localStorage.setItem("userinfo",JSON.stringify(data.data))
+      dispatch(activeuser(data.data))      
+
+
+
       setTimeout(()=>{
         navigate("/home")
         
@@ -31,8 +39,8 @@ const Login = () => {
     }
       
       
-    console.log(data.data);
-    localStorage.setItem("userinfo",JSON.stringify(data.data))
+    // console.log(data.data);
+    
       
     };
 
