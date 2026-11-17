@@ -24,8 +24,8 @@ const Home = () => {
  
 
     <Row>
-      <Col span={4}><Dashboard/></Col>
-      <Col span={20}><Outlet/></Col>
+      <Col span={6}><Dashboard/></Col>
+      <Col span={18}><Outlet/></Col>
     </Row>
  
 

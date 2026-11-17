@@ -26,7 +26,7 @@ const Login = () => {
 
 
       setTimeout(()=>{
-        navigate("/home")
+        navigate("/dashboard")
         
       },2000)
       

@@ -7,14 +7,12 @@ import { useSelector } from 'react-redux'
 const items = [
     {
         key: 'sub1',
-        label: 'Dashboard',
+         label: 'Dashboard',
         icon: <AppstoreOutlined />,
-        children: [
-            { key: '1', label: 'User' },
-
-        ],
-
+        children: [],
     },
+  
+    
     {
         type: 'divider',
     },
@@ -121,7 +119,7 @@ const Dashboard = () => {
             <div className='absolute bottom-0 left-[20px]'>
                 <div className='flex items-center gap-x-3'>
                     <div className='w-[50px] h-[50px] bg-red-200 rounded-full'></div>
-                    <p>{data.username}</p>
+                    <p>sajib khan</p>
 
                 </div>
                 <h3 onClick={handleLogout} className='text-center font-bold py-3 cursor-pointer'>Log Out</h3>
