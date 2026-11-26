@@ -6,6 +6,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import axios from 'axios'
 
 const CreateCategory = () => {
+  const [form] = Form.useForm();
     let dispatch=useDispatch()
     let user = useSelector(state=>state.userinfo.value)
    
@@ -21,14 +22,17 @@ const CreateCategory = () => {
       },
 
     )
+   
   
     if(data.data.success=="Category Created"){
       toast.success("Category Created")
+       form.resetFields();
+
     }else if(data.data.error=="Category Existed"){
       toast.error("Category Existed")
     }
 
-      console.log(data.data.success);
+      // console.log(data.data.success);
  
     
   }
@@ -39,6 +43,7 @@ const CreateCategory = () => {
 
   return (
     <Form
+      form={form}
       name="basic"
       labelCol={{ span: 8 }}
       wrapperCol={{ span: 16 }}
